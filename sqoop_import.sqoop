@@ -1,0 +1,22 @@
+sqoop import \
+-m 1 \
+--connect jdbc:mysql://localhost/alabs \
+--username root \
+--password cloudera \
+--compression-codec snappy \
+--as-parquetfile \
+--warehouse-dir /user/hive/warehouse \
+--table LC_loan_stats \
+--split-by id \
+--hive-import
+
+sqoop import \
+-m 1 \
+--connect jdbc:mysql://localhost/alabs \
+--username root \
+--password cloudera \
+--compression-codec snappy \
+--as-parquetfile \
+--warehouse-dir /user/hive/warehouse \
+--table LC_loan_reject_stats \
+--hive-import

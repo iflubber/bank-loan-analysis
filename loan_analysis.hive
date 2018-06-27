@@ -1,0 +1,65 @@
+CREATE VIEW IF NOT EXISTS loananalysis AS
+SELECT CAST(loan_amnt AS DOUBLE) loan_amnt, 
+CAST(funded_amnt AS DOUBLE) funded_amnt,
+SUBSTR(term,1,3) loan_term_mnths,
+CAST(REGEXP_REPLACE(int_rate,'\%','') AS DOUBLE) int_rate,
+grade grade,
+TO_DATE(FROM_UNIXTIME(UNIX_TIMESTAMP(issue_d,'MMM-yyyy'))) issue_date,
+loan_status loan_status,
+purpose purpose,
+UPPER(addr_state) addr_state,
+CAST(total_rec_prncp AS DOUBLE) total_rec_prncp,
+CAST(total_rec_int AS DOUBLE) total_rec_int,
+TO_DATE(FROM_UNIXTIME(UNIX_TIMESTAMP(last_pymnt_d,'MMM-yyyy'))) last_pymnt_date
+FROM LC_loan_stats;
+
+-- Total Loan Issuance By Year
+SELECT sum(loan_amnt) as total_loan, year(issue_date) as issue_year 
+FROM loananalysis 
+GROUP BY year(issue_date) 
+ORDER BY issue_year;
+
+-- Loan Issuance By State
+SELECT sum(loan_amnt) as total_loan, addr_state as state 
+FROM loananalysis 
+GROUP BY addr_state 
+ORDER BY state;
+
+-- Loan Issuance By Purpose
+SELECT sum(loan_amnt) as total_loan, purpose 
+FROM loananalysis 
+GROUP BY purpose 
+ORDER BY total_loan DESC;
+
+-- Yearly Average Interest Rate By Loan Term
+SELECT avg(int_rate) as avg_int_rate, loan_term_mnths, year(issue_date) as issue_year 
+FROM loananalysis 
+GROUP BY loan_term_mnths, year(issue_date) 
+ORDER BY issue_year;
+
+-- Grades over time
+SELECT grade, count(grade), year(issue_date) as issue_year  
+FROM loananalysis
+GROUP BY grade, year(issue_date)
+ORDER BY issue_year;
+
+-- Loan Performance By Status
+SELECT loan_status, sum(loan_amnt) as total_loan_amnt, year(issue_date) as issue_year
+FROM loananalysis
+GROUP BY loan_status, year(issue_date)
+ORDER BY issue_year;
+
+-- Loan Rejection By Purpose
+SELECT loan_title, count(*) as applications
+FROM lc_loan_reject_stats
+GROUP BY loan_title
+ORDER BY applications DESC;
+
+-- Loan Rejection Stats By Year
+SELECT year(TO_DATE(FROM_UNIXTIME(UNIX_TIMESTAMP(application_date,'yyyy-MM-dd')))) as application_year,
+sum(amount_requested) as loan_amnt,
+avg(CAST(risk_score AS DOUBLE)) as avg_risk_score,
+avg(CAST(REGEXP_REPLACE(debt_to_income_ratio,'\%','') AS DOUBLE)) as avg_DE_ratio
+FROM lc_loan_reject_stats
+GROUP BY year(TO_DATE(FROM_UNIXTIME(UNIX_TIMESTAMP(application_date,'yyyy-MM-dd'))))
+ORDER BY application_year;
