@@ -457,8 +457,7 @@ GROUP BY year(issue\_date)
 
 ORDER BY issue\_year;
 
-![](./screenshots/media/image1.tiff){width="5.957624671916011in"
-height="2.956521216097988in"}
+![](./screenshots/media/image1.tiff)
 
 -- Loan Issuance By State
 
@@ -470,8 +469,7 @@ GROUP BY addr\_state
 
 ORDER BY state;
 
-![](./screenshots/media/image2.tiff){width="6.263606736657918in"
-height="3.1478258967629045in"}
+![](./screenshots/media/image2.tiff)
 
 -- Loan Issuance By Purpose
 
@@ -483,8 +481,7 @@ GROUP BY purpose
 
 ORDER BY total\_loan DESC;
 
-![](./screenshots/media/image3.tiff){width="6.166666666666667in"
-height="6.736111111111111in"}
+![](./screenshots/media/image3.tiff)
 
 -- Yearly Average Interest Rate By Loan Term
 
@@ -497,8 +494,7 @@ GROUP BY loan\_term\_mnths, year(issue\_date)
 
 ORDER BY issue\_year;
 
-![](./screenshots/media/image4.tiff){width="6.263888888888889in"
-height="6.217391732283464in"}
+![](./screenshots/media/image4.tiff)
 
 -- Grades over time
 
@@ -510,8 +506,7 @@ GROUP BY grade, year(issue\_date)
 
 ORDER BY issue\_year;
 
-![](./screenshots/media/image5.tiff){width="6.263888888888889in"
-height="8.108333333333333in"}
+![](./screenshots/media/image5.tiff)
 
 -- Loan Performance
 
@@ -524,8 +519,7 @@ GROUP BY loan\_status, year(issue\_date)
 
 ORDER BY issue\_year;
 
-![](./screenshots/media/image6.tiff){width="6.263888888888889in"
-height="6.704348206474191in"}
+![](./screenshots/media/image6.tiff)
 
 -- Loan Rejection By Purpose
 
@@ -537,8 +531,7 @@ GROUP BY loan\_title
 
 ORDER BY applications DESC;
 
-![](./screenshots/media/image7.tiff){width="6.262869641294838in"
-height="3.3391305774278215in"}
+![](./screenshots/media/image7.tiff)
 
 -- Loan Rejection Stats By Year
 
@@ -560,38 +553,26 @@ year(TO\_DATE(FROM\_UNIXTIME(UNIX\_TIMESTAMP(application\_date,'yyyy-MM-dd'))))
 
 ORDER BY application\_year;
 
-![](./screenshots/media/image8.tiff){width="6.263888888888889in"
-height="2.657638888888889in"}
+![](./screenshots/media/image8.tiff)
 
 **Analysis using Tableau:**
 
-![](./screenshots/media/image9.tiff){width="6.263888888888889in"
-height="4.2972222222222225in"}
+![](./screenshots/media/image9.tiff)
 
-![](./screenshots/media/image10.tiff){width="6.263888888888889in"
-height="4.102083333333334in"}
+![](./screenshots/media/image10.tiff)
 
-![](./screenshots/media/image11.tiff){width="6.263888888888889in"
-height="4.127083333333333in"}
+![](./screenshots/media/image11.tiff)
 
-![](./screenshots/media/image12.tiff){width="6.263888888888889in"
-height="4.136111111111111in"}
+![](./screenshots/media/image12.tiff)
 
-![](./screenshots/media/image13.tiff){width="6.263888888888889in"
-height="4.138888888888889in"}
+![](./screenshots/media/image13.tiff)
 
-![](./screenshots/media/image14.tiff){width="6.263888888888889in"
-height="4.10625in"}
+![](./screenshots/media/image14.tiff)
 
-![](./screenshots/media/image15.tiff){width="6.263888888888889in"
-height="4.061805555555556in"}
+![](./screenshots/media/image15.tiff)
 
-![](./screenshots/media/image16.tiff){width="6.263888888888889in"
-height="4.122916666666667in"}
+![](./screenshots/media/image16.tiff)
 
-![](./screenshots/media/image17.tiff){width="6.263888888888889in"
-height="7.138194444444444in"}**\
-**
+![](./screenshots/media/image17.tiff)
 
-![](./screenshots/media/image18.tiff){width="6.263888888888889in"
-height="5.011111111111111in"}
+![](./screenshots/media/image18.tiff)
